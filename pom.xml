@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.hradecek.trakcer</groupId>
+  <artifactId>tracker</artifactId>
+  <version>0.0.0-SNAPSHOT</version>
+
+  <name>tracker-parent</name>
+  <packaging>pom</packaging>
+
+  <properties>
+    <!-- Project settings -->
+    <version.java>1.8</version.java>
+    <!-- Vert.x -->
+    <version.vertx>3.5.4</version.vertx>
+    <!-- Kafka -->
+    <version.kafka>2.0.0</version.kafka>
+    <!-- GPX format library -->
+    <version.jpx>1.4.0</version.jpx>
+  </properties>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>${version.java}</source>
+            <target>${version.java}</target>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Vert.x -->
+      <dependency>
+        <groupId>io.vertx</groupId>
+        <artifactId>vertx-kafka-client</artifactId>
+        <version>${version.vertx}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.vertx</groupId>
+        <artifactId>vertx-mqtt</artifactId>
+        <version>${version.vertx}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.vertx</groupId>
+        <artifactId>vertx-rx-java2</artifactId>
+        <version>${version.vertx}</version>
+      </dependency>
+      <!-- Kafka -->
+      <dependency>
+        <groupId>org.apache.kafka</groupId>
+        <artifactId>kafka-streams</artifactId>
+        <version>${version.kafka}</version>
+      </dependency>
+      <!-- GPX library -->
+      <dependency>
+        <groupId>io.jenetics</groupId>
+        <artifactId>jpx</artifactId>
+        <version>${version.jpx}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <modules>
+    <module>vertx-producer</module>
+    <module>mqtt-broker</module>
+    <module>kafka-server</module>
+  </modules>
+</project>
